@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eureka</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><span class="dot"></span> Eureka</div>
+    <div class="top-right">
+      <span id="source-badge" class="badge">…</span>
+      <button id="refresh-btn" class="ghost" title="Refresh WHOOP data">↻</button>
+      <a id="connect-btn" class="btn" href="/auth/whoop">Connect WHOOP</a>
+      <button id="disconnect-btn" class="ghost hidden">Disconnect</button>
+    </div>
+  </header>
+
+  <div id="banner" class="banner hidden"></div>
+
+  <main>
+    <section class="hero card">
+      <div class="ring-wrap">
+        <svg viewBox="0 0 120 120" class="ring">
+          <circle cx="60" cy="60" r="52" class="ring-bg" />
+          <circle cx="60" cy="60" r="52" class="ring-fg" id="ring-fg" />
+        </svg>
+        <div class="ring-label">
+          <div id="recovery-val" class="big">–</div>
+          <div class="muted small">Recovery</div>
+        </div>
+      </div>
+      <div class="hero-text">
+        <div class="muted small" id="today-date"></div>
+        <h1 id="greeting">Good morning</h1>
+        <p id="zone-text" class="muted"></p>
+      </div>
+    </section>
+
+    <section class="metrics">
+      <div class="card metric"><div class="muted small">HRV</div><div class="val" id="m-hrv">–</div><div class="delta" id="d-hrv"></div></div>
+      <div class="card metric"><div class="muted small">Resting HR</div><div class="val" id="m-rhr">–</div><div class="delta" id="d-rhr"></div></div>
+      <div class="card metric"><div class="muted small">Sleep</div><div class="val" id="m-sleep">–</div><div class="delta" id="d-sleep"></div></div>
+      <div class="card metric"><div class="muted small">Strain</div><div class="val" id="m-strain">–</div><div class="delta" id="d-strain"></div></div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Recovery · 14 days</h2>
+        <div id="chart-recovery" class="chart"></div>
+      </div>
+      <div class="card">
+        <h2>HRV & strain · 14 days</h2>
+        <div id="chart-hrv" class="chart"></div>
+        <div class="legend"><span class="key hrv"></span>HRV (ms) <span class="key strain"></span>Strain</div>
+      </div>
+      <div class="card">
+        <h2>Last night</h2>
+        <div id="sleep-stages"></div>
+      </div>
+      <div class="card">
+        <h2>Recent workouts</h2>
+        <ul id="workouts" class="list"></ul>
+      </div>
+    </section>
+
+    <section class="card coach">
+      <div class="coach-head">
+        <h2>Coach</h2>
+        <div class="coach-actions">
+          <button id="settings-btn" class="ghost">Goals & schedule</button>
+          <button id="plan-btn" class="btn">Plan my day</button>
+        </div>
+      </div>
+      <div id="settings" class="settings hidden">
+        <label>Goals <textarea id="goals" rows="2" placeholder="e.g. Run a sub-50 10k in March, sleep 8h, stay sharp for exams"></textarea></label>
+        <label>Today's schedule <textarea id="schedule" rows="2" placeholder="e.g. Class 9-12, gym available after 5pm, dinner with friends at 8"></textarea></label>
+      </div>
+      <div id="chat" class="chat"></div>
+      <form id="chat-form" class="chat-form">
+        <input id="chat-input" placeholder="Ask anything - 'Should I train hard today?', 'Why is my HRV down?'" autocomplete="off" />
+        <button class="btn" type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
