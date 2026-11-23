@@ -14,7 +14,7 @@ const fail = (e) => ({ isError: true, content: [{ type: "text", text: `Error: ${
 
 export const fmtRecovery = (r) => ({
   source: "WHOOP API v2 /v2/recovery",
-  cycle_id: r.cycle_id, sleep_id: r.sleep_id, date: r.created_at, score_state: r.score_state,
+  cycle_id: r.cycle_id, sleep_id: r.sleep_id, date: r.created_at, score_state: r.score_state, updated_at: r.updated_at ?? null,
   recovery_score_pct: r.score?.recovery_score ?? null,
   hrv_rmssd_ms: r.score?.hrv_rmssd_milli ?? null,
   resting_heart_rate_bpm: r.score?.resting_heart_rate ?? null,
@@ -27,7 +27,7 @@ export const fmtSleep = (s) => {
   const st = s.score?.stage_summary;
   return {
     source: "WHOOP API v2 /v2/activity/sleep",
-    id: s.id, start: s.start, end: s.end, nap: s.nap, score_state: s.score_state,
+    id: s.id, start: s.start, end: s.end, nap: s.nap, score_state: s.score_state, updated_at: s.updated_at ?? null,
     hours_asleep: st ? ms2h(st.total_in_bed_time_milli - st.total_awake_time_milli) : null,
     hours_in_bed: ms2h(st?.total_in_bed_time_milli),
     hours_rem: ms2h(st?.total_rem_sleep_time_milli),
@@ -43,7 +43,7 @@ export const fmtSleep = (s) => {
 
 export const fmtCycle = (c) => ({
   source: "WHOOP API v2 /v2/cycle",
-  id: c.id, start: c.start, end: c.end ?? "in progress", score_state: c.score_state,
+  id: c.id, start: c.start, end: c.end ?? "in progress", score_state: c.score_state, updated_at: c.updated_at ?? null,
   strain: c.score?.strain ?? null,
   kilojoules: c.score?.kilojoule ?? null,
   avg_heart_rate_bpm: c.score?.average_heart_rate ?? null,
