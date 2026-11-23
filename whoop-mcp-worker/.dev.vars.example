@@ -1,0 +1,9 @@
+# Local development only (`wrangler dev` reads .dev.vars). In production set these with `wrangler secret put`.
+WHOOP_CLIENT_ID=
+WHOOP_CLIENT_SECRET=
+# Password you type on the consent/admin pages (12+ chars)
+OWNER_PASSWORD=
+# 32 random bytes, base64: node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
+TOKEN_ENCRYPTION_KEY=
+# Optional: defaults to the origin the Worker is reached on
+# PUBLIC_URL=https://whoop-mcp.your-subdomain.workers.dev

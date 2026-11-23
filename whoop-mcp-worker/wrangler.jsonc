@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "whoop-mcp",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true },
+  // Secrets (set with `wrangler secret put`): WHOOP_CLIENT_ID, WHOOP_CLIENT_SECRET, OWNER_PASSWORD, TOKEN_ENCRYPTION_KEY
+  "vars": { "WHOOP_INCLUDE_WORKOUTS": "false" },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "whoop-mcp", "database_id": "b450f86b-848e-43f3-8e21-a17e586697c8" }
+  ]
+}
