@@ -1,4 +1,5 @@
 import express from "express";
+import { pathToFileURL } from "node:url";
 import { mcpAuthRouter, getOAuthProtectedResourceMetadataUrl } from "@modelcontextprotocol/sdk/server/auth/router.js";
 import { requireBearerAuth } from "@modelcontextprotocol/sdk/server/auth/middleware/bearerAuth.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
@@ -171,7 +172,7 @@ function adminPage(error) {
     </form>`);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const cfg = loadConfig();
   createApp(cfg).app.listen(cfg.port, () => console.log(`WHOOP MCP listening on :${cfg.port}. Connector URL: ${cfg.mcpUrl}`));
 }
